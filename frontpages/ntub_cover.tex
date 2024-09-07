@@ -1,0 +1,68 @@
+%
+% this file is encoded in utf-8
+% v1
+
+\newgeometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       ntust cover 封面
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\begin{titlepage}
+% no page number
+% next page will be page 1
+
+% aligned to the center of the page horizontally
+\begin{center}
+% font size (relative to 12 pt):
+% \large (14pt) < \Large (18pt) < \LARGE (20pt) < \huge (24pt)< \Huge (24 pt)
+%
+% 校名與系所名
+% \vspace*{0cm}
+{\CJKfamily{kai}\fontsize{26pt}{26pt}\selectfont\textbf{\univCname}}\\ % 校名，26pt
+\vspace{0.5cm}
+{\CJKfamily{kai}\fontsize{24pt}{36pt}\selectfont\textbf{\deptCname}}\\ % 系所名，24pt
+\vspace{0.5cm}
+{\CJKfamily{kai}\fontsize{24pt}{36pt}\selectfont\textbf{\degreeCname 論文}}\\ % 論文種類，24pt
+\vspace{0.5cm}
+%
+\vspace{18pt}
+\vspace{18pt}
+\vspace{18pt}
+\vspace{18pt}
+\vspace{18pt}
+%
+{\CJKfamily{kai}\fontsize{24pt}{36pt}\selectfont\textbf{\cTitle}}\\ % 論文種類，24pt
+\fontsize{22pt}{22pt}\selectfont{\eTitle}\\ % 英文題目，20pt 或 22pt，Times New Roman
+%
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+\vspace{12pt}
+%
+% 研究生與指導教授信息
+{\CJKfamily{kai}\fontsize{18pt}{18pt}\selectfont\textbf{{研究生：\Large{\myCname}}}}\\ % 研究生，18pt
+\vspace{18pt}
+\vspace{18pt}
+\vspace{18pt}
+\vspace{18pt}
+{\CJKfamily{kai}\fontsize{18pt}{18pt}\selectfont\textbf{指導教授：\Large{\advisorCnameA}}}\\ % 指導教授A，18pt
+\vspace{18pt}
+\vspace{18pt}
+\vspace{18pt}
+% 顯示日期 18pt
+{\CJKfamily{kai}\fontsize{18pt}{18pt}\selectfont\textbf{中華民國\cYear 年\cMonth 月}}\\
+%
+\end{center}
+% 恢復原設置
+\renewcommand{\baselinestretch}{\mybaselinestretch}   %恢復原設定
+% restore the font size to normal
+\normalsize
+\end{titlepage}
+%%%%%%%%%%%%%%

@@ -1,0 +1,52 @@
+%
+% this file is encoded in utf-8
+% v1
+
+
+%%% 參考文獻 APA 格式
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 中文文獻 bib add keywords = {chinese}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{\nameRef}
+\addcontentsline{toc}{chapter}{\nameRef}
+%
+\phantomsection %隱藏標記 (因為\section* 不會自動增加節的編號)
+\section*{中文部分}
+\addcontentsline{toc}{section}{中文部分}
+\printbibliography[heading=none, keyword=chinese]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 英文文獻 bib add keywords = {english}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\phantomsection %隱藏標記 (因為\section* 不會自動增加節的編號)
+\section*{英文部分}
+\addcontentsline{toc}{section}{英文部分}
+\printbibliography[heading=none, keyword=english]
+
+% \printbibliography
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% 附錄
+%\input{backpages/my_appendix.tex}
+
+%%% 自傳
+%\newpage
+%\chapter*{\protect\makebox[5cm][s]{\nameVita}} % \makebox{} is fragile; need protect
+%\addcontentsline{toc}{chapter}{\nameVita}
+%\input{backpages/my_vita.tex}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       授權書 (計頁碼，但不印頁碼) 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% insert the printed standard form when the thesis is ready to bind
+% 在口試完成後，再將已簽名的授權書放入以便裝訂
+% create an entry in table of contents for 授權書
+% 目前送出空白頁
+% \newpage{\thispagestyle{empty}\addcontentsline{toc}{chapter}{\nameCopyrightForm}\mbox{}\clearpage}
+

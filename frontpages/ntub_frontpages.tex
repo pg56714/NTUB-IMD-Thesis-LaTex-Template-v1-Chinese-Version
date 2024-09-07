@@ -1,0 +1,223 @@
+%
+% this file is encoded in utf-8
+% v1
+
+% 無須修改本檔內容，除非校方修改了
+% 封面、書名頁、中文摘要、英文摘要、誌謝、目錄、表目錄、圖目錄、符號說明
+% 等頁之格式
+
+% make the line spacing in effect
+% \renewcommand{\baselinestretch}{\mybaselinestretch}
+% \large % it needs a font size changing command to be effective
+
+% default variables definitions
+% 注意！！此處只是預設值，不需更改此處
+% 請更改 my_names.tex 內容
+\newcommand\cTitle{論文題目}
+\newcommand\eTitle{MY THESIS TITLE}
+\newcommand\myCname{OOO}
+\newcommand\advisorCnameA{OOO\ 博士}
+\newcommand\univCname{國立臺灣大學}
+\newcommand\deptCname{資訊工程研究所}
+\newcommand\degreeCname{碩士}
+\newcommand\cYear{一一四}
+\newcommand\cMonth{六}
+
+ % user's names; to replace those default variable definitions
+\input{frontpages/my_names.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       ntust cover 封面
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{frontpages/ntub_cover.tex}
+%%%%%%%%%%%%%%
+
+\newgeometry{top=3cm, bottom=3cm, left=3.5cm, right=3cm}
+
+%% 從摘要到本文之前的部份以小寫羅馬數字印頁碼
+% 但是從「書名頁」(但不印頁碼) 就開始計算
+%\setcounter{page}{1}
+\pagenumbering{Roman}
+%\pagenumbering{arabic}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       指導教授推薦書 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% insert the printed standard form when the thesis is ready to bind
+% 在口試完成後，再將已簽名的推薦書放入以便裝訂
+% create an entry in table of contents for 推薦書
+% 目前送出空白頁
+%\newpage{\thispagestyle{empty}\addcontentsline{toc}{chapter}{\nameInnerCover}\mbox{}\clearpage}%
+%\newpage
+
+% 判斷是否要浮水印？
+\ifx\mywatermark\undefined 
+  \thispagestyle{empty}  % 無頁碼、無 header (無浮水印)
+\else
+  \thispagestyle{EmptyWaterMarkPage} % 無頁碼、有浮水印
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       論文口試委員審定書 (計頁碼，但不印頁碼) 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% insert the printed standard form when the thesis is ready to bind
+% 在口試完成後，再將已簽名的審定書放入以便裝訂
+% create an entry in table of contents for 審定書
+% 目前送出空白頁
+
+%\newpage{\thispagestyle{empty}\addcontentsline{toc}{chapter}{\nameCommitteeForm}\mbox{}\clearpage}%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       中文摘要 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% aligned to the center of the page
+\chapter*{\mdseries\nameCabstract}
+% create an entry in table of contents for 中文摘要
+% \addcontentsline{toc}{chapter}{　\nameCabstract}
+\addcontentsline{toc}{chapter}{\nameCabstract}
+\thispagestyle{plain}  % 無 header，但在浮水印模式下會有浮水印
+% \vspace*{0.5cm}
+% Resume the line spacing to the desired setting
+\renewcommand{\baselinestretch}{\mybaselinestretch}   %恢復原設定
+%it needs a font size changing command to be effective
+% restore the font size to normal
+\normalsize
+%%%%%%%%%%%%%
+\input{frontpages/my_cabstract.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       英文摘要 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% aligned to the center of the page
+\chapter*{\mdseries\nameEabstract}
+% create an entry in table of contents for 中文摘要
+% \addcontentsline{toc}{chapter}{　\nameEabstract}
+\addcontentsline{toc}{chapter}{\nameEabstract}
+\thispagestyle{plain}  % 無 header，但在浮水印模式下會有浮水印
+% \vspace*{0.5cm}
+% Resume the line spacing to the desired setting
+\renewcommand{\baselinestretch}{\mybaselinestretch}   %恢復原設定
+%it needs a font size changing command to be effective
+% restore the font size to normal
+\normalsize
+%%%%%%%%%%%%%
+\input{frontpages/my_eabstract.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       誌謝 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Acknowledgment
+% aligned to the center of the page
+\chapter*{\mdseries\nameAckn}
+% create an entry in table of contents for 中文摘要
+% \addcontentsline{toc}{chapter}{　\nameAckn}
+\addcontentsline{toc}{chapter}{\nameAckn}
+\thispagestyle{plain}  % 無 header，但在浮水印模式下會有浮水印
+% \vspace*{0.5cm}
+% Resume the line spacing to the desired setting
+\renewcommand{\baselinestretch}{\mybaselinestretch}   %恢復原設定
+%it needs a font size changing command to be effective
+% restore the font size to normal
+\normalsize
+%%%%%%%%%%%%%
+\input{frontpages/my_ackn.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       目錄 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Table of contents
+\newpage
+\renewcommand{\contentsname}{\mdseries\nameToc}
+\phantomsection % for hyperref to register this
+% \addcontentsline{toc}{chapter}{　\nameToc}
+\addcontentsline{toc}{chapter}{\nameToc}
+\tableofcontents
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       圖目錄 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% List of Figures
+\newcommand{\loflabel}{圖}
+\newpage
+\renewcommand{\numberline}[1]{\loflabel~#1\hspace*{1em}}
+\renewcommand{\listfigurename}{\mdseries\nameTof}
+\phantomsection % for hyperref to register this
+% \addcontentsline{toc}{chapter}{　\nameTof}
+\addcontentsline{toc}{chapter}{\nameTof}
+\listoffigures
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       表目錄 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% List of Tables
+\newcommand{\lotlabel}{表}
+\newpage
+\renewcommand{\numberline}[1]{\lotlabel~#1\hspace*{1em}}
+\renewcommand{\listtablename}{\mdseries\nameLot}
+\phantomsection % for hyperref to register this
+% \addcontentsline{toc}{chapter}{　\nameLot}
+\addcontentsline{toc}{chapter}{\nameLot}
+\listoftables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       演算法目錄 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% List of Figures
+%\newpage
+%\renewcommand{\listalgorithmname}{\protect\makebox[5cm][s]{\nameToa}}
+%\makebox{} is fragile; need protect
+%\addcontentsline{toc}{chapter}{\nameToa}
+%\listofalgorithms
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       符號說明 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Symbol list
+% define new environment, based on standard description environment
+% adapted from p.60~64, <<The LaTeX Companion>>, 1994, ISBN 0-201-54199-8
+%\newcommand{\SymEntryLabel}[1]%
+% {\makebox[3cm][l]{#1}}
+%
+%\newenvironment{SymEntry}
+%   {\begin{list}{}%
+%       {\renewcommand{\makelabel}{\SymEntryLabel}%
+%        \setlength{\labelwidth}{3cm}%
+%        \setlength{\leftmargin}{\labelwidth}%
+%        }%
+%   }%
+%   {\end{list}}
+%%
+%\newpage
+%\chapter*{\protect\makebox[5cm][s]{\nameSlist}} %\makebox{} is fragile; need protect
+%\addcontentsline{toc}{chapter}{\nameSlist}
+%\input{frontpages/my_symbols.tex}
+
+% Resume the line spacing to the desired setting
+\renewcommand{\baselinestretch}{\mybaselinestretch}   %恢復原設定
+%it needs a font size changing command to be effective
+% restore the font size to normal
+\normalsize
+
+\newpage
+\setcounter{page}{1}
+% \pagenumbering{arabic}
+%% 論文本體頁碼回復為阿拉伯數字計頁，並從頭起算
+\pagenumbering{arabic}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

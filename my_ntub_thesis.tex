@@ -1,0 +1,114 @@
+%
+% this file is encoded in utf-8
+% v1
+
+\documentclass[12pt,a4paper]{ntub_report}
+
+\usepackage{fontspec}   % 加這個就可以設定字體 
+\usepackage{xeCJK}      % 讓中英文字體分開設置
+
+% fontset=none因本地端字型有Bug，且也不需用到ctex字體，主要用在修改成章跟節(目錄以及標題)
+\usepackage[fontset=none, UTF8, heading=true]{ctex}
+
+% \usepackage{showframe} % 查看排版debug用 makes the page borders visible
+
+%設定主要字型，也就是英文字型
+\setmainfont{TimesNewRoman.ttf}% 上網抓ttf
+
+%設定中文字型
+%參考 https://www.overleaf.com/learn/latex/Questions/What_OTF/TTF_fonts_are_supported_via_fontspec%3F#Chinese
+\setCJKmainfont{mingliu.ttc}% 設定內文為新細明體(沒有內建的)，使用W11新細明體字型
+\setCJKfamilyfont{kai}{kaiu.ttf}[AutoFakeBold=3]% 設定標楷體直接使用TW-Kai也是一樣，使用W11標楷體字型
+
+% 設置段落自動換行
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+% 目錄跟自動編號的深度(章、節)
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+
+% https://www.overleaf.com/learn/latex/Hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black, 
+    filecolor=black,      
+    urlcolor=black,
+    citecolor=black,
+    pdfpagemode=FullScreen,
+    linktoc=all, % 強制所有標題鏈接有效
+    pdftitle={thesis}, %之後改成論文題目
+}
+
+% % debug
+% \hypersetup{
+%     colorlinks=true,
+%     linkcolor=blue,
+%     filecolor=blue,
+%     urlcolor=blue,
+%     citecolor=blue,
+%     pdfpagemode=FullScreen,
+%     linktoc=all,
+%     pdftitle={thesis}
+% }
+
+\input{common_env}  %基本的環境設定  無需改變
+
+%參考文獻APA格式，記得在bib加上 keywords  = {chinese} or {english}
+\usepackage[style=apa]{biblatex} % 'backend=biber' is the default
+\addbibresource{my_bib.bib}
+
+\begin{document}
+
+
+
+	\input{chinese_trans} %在此檔案處定義文章中的中文名詞
+
+	%---------------------------------------------------------------------------------------------------------
+	%%% 以下是載入前頁、本文、後頁
+
+	%---------------------------------------------------------------------------------------------------------
+	% front matter 前頁
+	% 包括封面、書名頁、中文摘要、英文摘要、誌謝、目錄、表目錄、圖目錄、符號說明
+	% 在撰寫各章草稿時，可以把此部份「關掉」，以節省無謂的編譯時間。
+	% 實際內容由
+	%    my_names.tex, my_cabstract.tex, my_eabstract.tex, my_ackn.tex, my_symbols.tex
+	% 決定
+	% ntust_frontpages.tex 此檔只提供整體架構的定義，不需更動
+	% 在撰寫各章草稿時，可以把此部份「關掉」，以節省無謂的編譯時間。
+	
+	\input{frontpages/ntub_frontpages.tex} 
+
+
+
+
+	%---------------------------------------------------------------------------------------------------------
+	% main body 論文主體。建議以「章」為檔案分割的依據。
+	% 以下為建議的命名分類
+	%   introduction.tex   related_work.tex  protocol.tex  evaluation.tex  conclusion.tex
+	% 做為這幾個「章」的檔案名稱，並將檔案存放於資料夾 sections/ 下
+	% 實際命名方式可以隨你意
+	% 在撰寫各章草稿時，可以把其他章節關掉 (行首加百分號)
+	%\input{example/example_body.tex}  % 所附的範例
+
+	\input{sections/1_introduction.tex}
+	\input{sections/2_relative-work.tex}
+	\input{sections/3_method.tex}
+	\input{sections/4_result.tex}
+	\input{sections/5_discussion.tex}
+	\input{sections/6_conclusion.tex}
+
+	%---------------------------------------------------------------------------------------------------------
+	% back pages 後頁
+	% 包括參考文獻、附錄、自傳
+	% 實際內容由
+	%    my_bib.bib, my_appendix.tex, my_vita.tex
+	% 決定
+	% ntust_backpages.tex 此檔只提供整體架構的定義，不需更動
+	% 在撰寫各章草稿時，可以把此部份「關掉」，以節省無謂的編譯時間。
+        
+	\input{backpages/ntub_backpages.tex}
+
+\end{document} 
+ 

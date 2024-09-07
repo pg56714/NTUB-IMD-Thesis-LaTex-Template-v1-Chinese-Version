@@ -1,4 +1,4 @@
-# NTUB Thesis LaTex Template v1 Chinese Version v1 (2024/09/07)
+# NTUB Thesis LaTex Template v1 Chinese Version (2024/09/07)
 
 - [ ] **2025/6 確認格式可以被接受後發佈模板 [Overleaf-NTUB-Template]()**
 

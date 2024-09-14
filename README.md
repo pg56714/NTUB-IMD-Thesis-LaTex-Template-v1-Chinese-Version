@@ -32,6 +32,8 @@
 
 9.ctex 設定 fontset=none 因本地端字型有 Bug，且也不需用到 ctex 字體，主要用在修改成章跟節(目錄以及標題)
 
+10.\newcommand{\mybaselinestretch}{2} %行距 1.5 倍 --> 設定 2 看起來比較像 1.5 倍，以此類推
+
 ```tex
 \usepackage[fontset=none, UTF8, heading=true]{ctex}
 ```

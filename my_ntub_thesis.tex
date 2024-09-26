@@ -13,11 +13,11 @@
 % \usepackage{showframe} % 查看排版debug用 makes the page borders visible
 
 %設定主要字型，也就是英文字型
-\setmainfont{TimesNewRoman.ttf}% 上網抓ttf
+\setmainfont{TimesNewRoman.ttf}[AutoFakeBold=3]% 上網抓ttf
 
 %設定中文字型
 %參考 https://www.overleaf.com/learn/latex/Questions/What_OTF/TTF_fonts_are_supported_via_fontspec%3F#Chinese
-\setCJKmainfont{mingliu.ttc}% 設定內文為新細明體(沒有內建的)，使用W11新細明體字型
+\setCJKmainfont{mingliu.ttc}[AutoFakeBold=3]% 設定內文為新細明體(沒有內建的)，使用W11新細明體字型
 \setCJKfamilyfont{kai}{kaiu.ttf}[AutoFakeBold=3]% 設定標楷體直接使用TW-Kai也是一樣，使用W11標楷體字型
 
 % 設置段落自動換行

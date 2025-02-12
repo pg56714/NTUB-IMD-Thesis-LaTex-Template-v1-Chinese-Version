@@ -624,9 +624,9 @@
 \setlength\belowcaptionskip{0\p@}
 \long\def\@makecaption#1#2{%
   \vskip\abovecaptionskip
-  \sbox\@tempboxa{#1: #2}%
+  \sbox\@tempboxa{#1\space\space\space\space#2}%
   \ifdim \wd\@tempboxa >\hsize
-    #1: #2\par
+    #1\space\space\space\space#2\par
   \else
     \global \@minipagefalse
     \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%

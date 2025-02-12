@@ -6,17 +6,17 @@
 
 ## 修改內容
 
-1.封面格式
+1. 封面格式
 
-2.刪除無用的頁面
+2. 刪除無用的頁面
 
-3.章節格式
+3. 章節格式
 
-4.參考文獻分成中英部分以及使用 APA 格式
+4. 參考文獻分成中英部分以及使用 APA 格式
 
-5.版面配置更新(使用 Thesis NCKU latex 的 yzu_report.cls 2008/12/16 v0.3)
+5. 版面配置更新(使用 Thesis NCKU latex 的 yzu_report.cls 2008/12/16 v0.3)
 
-6.更改第 5 點 cls(更改目錄空白間隔)
+6. 更改第 5 點 cls(更改目錄空白間隔)
 
 ```tex
 692 % \newcommand*{\l@chapter}{\@dottedtocline{0}{0em}{\tocChNumberWidth}}
@@ -26,19 +26,34 @@
 712 \newcommand\*\l@figure{\@dottedtocline{1}{0em}{2.3em}}% 圖跟表目錄不用空格
 ```
 
-7.移除一些 Logs 提示(剩下字型的就不管了)
+7. 移除一些 Logs 提示(剩下字型的就不管了)
 
-8.內文為新細明體，標題為標楷體(字型用字型檔案匯入，不然不準確)
+8. 內文為新細明體，標題為標楷體(字型用字型檔案匯入，不然不準確)
 
-9.ctex 設定 fontset=none 因本地端字型有 Bug，且也不需用到 ctex 字體，主要用在修改成章跟節(目錄以及標題)
+9. ctex 設定 fontset=none 因本地端字型有 Bug，且也不需用到 ctex 字體，主要用在修改成章跟節(目錄以及標題)
 
-10.\newcommand{\mybaselinestretch}{2} %行距 1.5 倍 --> 設定 2 看起來比較像 1.5 倍，以此類推
+10. \newcommand{\mybaselinestretch}{2} %行距 1.5 倍 --> 設定 2 看起來比較像 1.5 倍，以此類推
 
 ```tex
 \usepackage[fontset=none, UTF8, heading=true]{ctex}
 ```
 
 [ctex-kit issue #514](https://github.com/CTeX-org/ctex-kit/issues/514)
+
+11. 修改圖跟表的標題格式
+
+```tex
+\long\def\@makecaption#1#2{%
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{#1\space\space\space\space#2}%
+  \ifdim \wd\@tempboxa >\hsize
+    #1\space\space\space\space#2\par
+  \else
+    \global \@minipagefalse
+    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip\belowcaptionskip}
+```
 
 ## 使用方法
 

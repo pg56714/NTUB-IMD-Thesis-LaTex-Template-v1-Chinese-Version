@@ -20,9 +20,9 @@
 
 ```tex
 692 % \newcommand*{\l@chapter}{\@dottedtocline{0}{0em}{\tocChNumberWidth}}
-693 \newcommand*{\l@chapter}{\@dottedtocline{0}{0em}{3.65em}}%第二個 em 是中間的間隔
+693 \newcommand*{\l@chapter}{\@dottedtocline{0}{0em}{4em}}%第二個 em 是中間的間隔
 694 % \newcommand*\l@section{\@dottedtocline{1}{1.5em}{2.3em}}
-695 \newcommand*\l@section{\@dottedtocline{1}{0.9em}{3.65em}}%改成中文節前面有空格要消除，第二個 em 是中間的間隔
+695 \newcommand*\l@section{\@dottedtocline{1}{0.9em}{4em}}%改成中文節前面有空格要消除，第二個 em 是中間的間隔
 712 \newcommand\*\l@figure{\@dottedtocline{1}{0em}{2.3em}}% 圖跟表目錄不用空格
 ```
 

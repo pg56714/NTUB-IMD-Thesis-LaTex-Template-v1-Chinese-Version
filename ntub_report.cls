@@ -690,9 +690,9 @@
 \newlength{\tocChNumberWidth}
 \setlength{\tocChNumberWidth}{1.4em}
 % \newcommand*{\l@chapter}{\@dottedtocline{0}{0em}{\tocChNumberWidth}}
-\newcommand*{\l@chapter}{\@dottedtocline{0}{0em}{3.65em}}%第二個em是中間的間隔
+\newcommand*{\l@chapter}{\@dottedtocline{0}{0em}{4em}}%第二個em是中間的間隔
 % \newcommand*\l@section{\@dottedtocline{1}{1.5em}{2.3em}}
-\newcommand*\l@section{\@dottedtocline{1}{0.9em}{3.65em}}%改成中文節前面有空格要消除，第二個em是中間的間隔
+\newcommand*\l@section{\@dottedtocline{1}{0.9em}{4em}}%改成中文節前面有空格要消除，第二個em是中間的間隔
 \newcommand*\l@subsection{\@dottedtocline{2}{3.8em}{3.2em}}
 \newcommand*\l@subsubsection{\@dottedtocline{3}{7.0em}{4.1em}}
 \newcommand*\l@paragraph{\@dottedtocline{4}{10em}{5em}}

@@ -2,6 +2,8 @@
 % this file is encoded in utf-8
 % v1
 
+\pagestyle{plain}  % 前幾頁不顯示 fancyhdr
+
 % 無須修改本檔內容，除非校方修改了
 % 封面、書名頁、中文摘要、英文摘要、誌謝、目錄、表目錄、圖目錄、符號說明
 % 等頁之格式
@@ -215,9 +217,18 @@
 % restore the font size to normal
 \normalsize
 
+%% 論文本體頁碼回復為阿拉伯數字計頁，並從頭起算
 \newpage
 \setcounter{page}{1}
-% \pagenumbering{arabic}
-%% 論文本體頁碼回復為阿拉伯數字計頁，並從頭起算
 \pagenumbering{arabic}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\ifnum\value{page}>0 第 \thepage 頁，共 \pageref{LastPage} 頁\fi}
+
+% 確保 plain 頁碼格式（如章節首頁）也適用 fancyhdr
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \fancyfoot[C]{第 \thepage 頁，共 \pageref{LastPage} 頁}
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

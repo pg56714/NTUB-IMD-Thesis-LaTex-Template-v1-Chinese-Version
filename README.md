@@ -55,6 +55,27 @@
   \vskip\belowcaptionskip}
 ```
 
+12. 頁碼格式調整
+
+```tex
+\pagestyle{plain}  % 前幾頁要顯示 小寫羅馬數字 故不套用 fancyhdr
+```
+
+```tex
+\usepackage{fancyhdr} % 引入 fancyhdr 套件
+\usepackage{lastpage} % 引入 lastpage 套件來獲取最後一頁的頁碼
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\ifnum\value{page}>0 第 \thepage 頁，共 \pageref{LastPage} 頁\fi}
+
+% 確保 plain 頁碼格式（如章節首頁）也適用 fancyhdr
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \fancyfoot[C]{第 \thepage 頁，共 \pageref{LastPage} 頁}
+}
+```
+
 ## 使用方法
 
 在進行論文寫作時，只需改變所有檔名為 `my_XXXXXXX.XXX` 的文件。

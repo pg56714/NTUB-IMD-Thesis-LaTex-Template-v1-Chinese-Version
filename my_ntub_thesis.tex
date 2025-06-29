@@ -89,13 +89,18 @@
 }
 
 \DeclareFieldFormat[article,inproceedings,online]{title}{“#1”}
+\DeclareLabeldate{%
+  \field{year}
+  \field{extradate}
+}
+\DeclareFieldFormat{labelyear}{#1\printfield{extradate}}
 
 \DeclareBibliographyDriver{article}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \printnames{author}\adddot\addspace%
-  \printfield{year}\adddot\addspace%
-  \printfield{title}\addcomma\addspace%
+  \printfield{labelyear}\adddot\addspace
+  \printfield{title}\adddot\addspace%
   \printfield{journaltitle}\addcomma\addspace%
   \printfield{volume}%
   \iffieldundef{number}{}{%
@@ -103,7 +108,7 @@
     no.~\printfield{number}%
   }%
   \addcomma\addspace%
-  \printfield{pages}%
+  pp.~\printfield{pages}%
   \finentry%
 }
 
@@ -111,7 +116,7 @@
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \printnames{author}\adddot\addspace%
-  \printfield{year}\adddot\addspace%
+  \printfield{labelyear}\adddot\addspace
   \printfield{title}\addcomma\addspace%
   \printfield{booktitle}%
   \iffieldundef{publisher}{}{%
@@ -127,9 +132,9 @@
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \printnames{author}\adddot\addspace%
-  \printfield{year}\adddot\addspace%
-  \printfield{title}\addcomma\addspace%
-  original source: \thefield{url}\addspace%
+  \printfield{labelyear}\adddot\addspace
+  \printfield{title}\adddot\addspace%
+  original source: \url{\thefield{url}}\adddot\addspace%
   \printfield{note}%
   \finentry%
 }

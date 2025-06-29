@@ -126,6 +126,16 @@
   \DeclareFieldFormat[article,inproceedings,online]{title}{“#1”}
   ```
 
+- 設定年份加上 a/b/c 識別（同年多文獻情形）
+
+  ```tex
+  \DeclareLabeldate{%
+    \field{year}
+    \field{extradate}  % ❗extrayear 已棄用，改用 extradate
+  }
+  \DeclareFieldFormat{labelyear}{#1\printfield{extradate}}
+  ```
+
 - 調整 `@article` 格式：
 
   ```tex
@@ -133,7 +143,7 @@
     \usebibmacro{bibindex}%
     \usebibmacro{begentry}%
     \printnames{author}\adddot\addspace%
-    \printfield{year}\adddot\addspace%
+    \printfield{labelyear}\adddot\addspace
     \printfield{title}\adddot\addspace%
     \printfield{journaltitle}\addcomma\addspace%
     \printfield{volume}%
@@ -142,7 +152,7 @@
       no.~\printfield{number}%
     }%
     \addcomma\addspace%
-    \printfield{pages}%
+    pp.~\printfield{pages}%
     \finentry%
   }
   ```
@@ -154,8 +164,8 @@
     \usebibmacro{bibindex}%
     \usebibmacro{begentry}%
     \printnames{author}\adddot\addspace%
-    \printfield{year}\adddot\addspace%
-    \printfield{title}\adddot\addspace%
+    \printfield{labelyear}\adddot\addspace
+    \printfield{title}\addcomma\addspace%
     \printfield{booktitle}%
     \iffieldundef{publisher}{}{%
       \addcomma\addspace%
@@ -174,7 +184,7 @@
     \usebibmacro{bibindex}%
     \usebibmacro{begentry}%
     \printnames{author}\adddot\addspace%
-    \printfield{year}\adddot\addspace%
+    \printfield{labelyear}\adddot\addspace
     \printfield{title}\adddot\addspace%
     original source: \url{\thefield{url}}\adddot\addspace%
     \printfield{note}%

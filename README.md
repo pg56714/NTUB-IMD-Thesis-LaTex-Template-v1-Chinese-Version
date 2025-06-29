@@ -1,8 +1,12 @@
-# NTUB Thesis LaTex Template v1 Chinese Version (2024/09/07)
+# NTUB Thesis LaTex Template v1 Chinese Version (2025/07)
 
-- [ ] **2025/6 確認格式可以被接受後發佈模板 [Overleaf-NTUB-Template]()**
+- [ ] **2025/07 確認格式可以被接受後發佈模板 [Overleaf-NTUB-Template]()**
 
-本範本是由 NTUST Thesis template 2.0.1 (Chinese Version) latex 範本改編而來，主要是修改了以下幾個東西
+本範本是由 NTUST Thesis template 2.0.1 (Chinese Version) latex 範本改編而來
+
+## 📌 免責聲明與使用須知
+
+本 LaTeX 模板依據 **國立臺北商業大學資訊管理系人工智慧與商業應用碩士班論文格式**需求，參考並改寫自 NTUST 與 NCKU 之公開模板版本，**並非官方提供範本**。本範本已盡力符合撰寫格式要求，惟各系所或指導教授對格式可能仍有個別調整要求，請使用者**務必自行確認所屬學院與系所之最新論文格式規範**，如有不符請自行修改。
 
 ## 修改內容
 
@@ -12,7 +16,7 @@
 
 3. 章節格式
 
-4. 參考文獻分成中英部分以及使用 APA 格式
+4. 參考文獻分成中英部分
 
 5. 版面配置更新(使用 Thesis NCKU latex 的 yzu_report.cls 2008/12/16 v0.3)
 
@@ -26,7 +30,7 @@
 712 \newcommand\*\l@figure{\@dottedtocline{1}{0em}{2.3em}}% 圖跟表目錄不用空格
 ```
 
-7. 移除一些 Logs 提示(剩下字型的就不管了)
+7. 移除一些 Logs 提示
 
 8. 內文為新細明體，標題為標楷體(字型用字型檔案匯入，不然不準確)
 
@@ -76,6 +80,116 @@
 }
 ```
 
+13. 新增 biblatex 格式客製化（中英分開、符合社會科學論叢格式）
+
+為了符合《社會科學論叢》要求，新增並調整 `biblatex` 的格式如下：
+
+- 載入 `biblatex` 套件並使用 `authoryear` 樣式（符合作者-年份格式），文獻依作者排序（`nyt = name, year, title`），保留 URL 欄位：
+
+  ```tex
+  \usepackage[style=authoryear,sorting=nyt,url=true]{biblatex}
+  \addbibresource{my_bib.bib}
+  ```
+
+- 隱藏 `type` 欄位（例如 Doctoral dissertation 不顯示）：
+
+  ```tex
+  \DeclareFieldFormat{type}{}
+  ```
+
+- 中文標點定義：
+
+  ```tex
+  \newcommand{\zhcomma}{，}
+  \newcommand{\zhperiod}{。}
+  ```
+
+- `@miscc` 條目只處理 `keywords=chinese` 的文獻（避免英文文獻誤套格式）：
+
+  ```tex
+  \DeclareBibliographyDriver{miscc}{%
+    \usebibmacro{bibindex}%
+    \usebibmacro{begentry}%
+    \ifkeyword{chinese}{%
+      \printnames{author}\zhcomma
+      \printfield{year}\zhcomma
+      「\printfield{title}」\zhcomma
+      \printfield{note}%
+      \zhperiod
+    }%
+  }
+  ```
+
+- 調整英文引用格式中 `title` 欄位不使用斜體、以直引號 “ ” 包住：
+
+  ```tex
+  \DeclareFieldFormat[article,inproceedings,online]{title}{“#1”}
+  ```
+
+- 調整 `@article` 格式：
+
+  ```tex
+  \DeclareBibliographyDriver{article}{%
+    \usebibmacro{bibindex}%
+    \usebibmacro{begentry}%
+    \printnames{author}\adddot\addspace%
+    \printfield{year}\adddot\addspace%
+    \printfield{title}\adddot\addspace%
+    \printfield{journaltitle}\addcomma\addspace%
+    \printfield{volume}%
+    \iffieldundef{number}{}{%
+      \addcomma\addspace%
+      no.~\printfield{number}%
+    }%
+    \addcomma\addspace%
+    \printfield{pages}%
+    \finentry%
+  }
+  ```
+
+- 調整 `@inproceedings` 格式：
+
+  ```tex
+  \DeclareBibliographyDriver{inproceedings}{%
+    \usebibmacro{bibindex}%
+    \usebibmacro{begentry}%
+    \printnames{author}\adddot\addspace%
+    \printfield{year}\adddot\addspace%
+    \printfield{title}\adddot\addspace%
+    \printfield{booktitle}%
+    \iffieldundef{publisher}{}{%
+      \addcomma\addspace%
+      \printlist{publisher}%
+    }%
+    \addcomma\addspace%
+    \printfield{pages}%
+    \finentry%
+  }
+  ```
+
+- 調整 `@online` 格式：
+
+  ```tex
+  \DeclareBibliographyDriver{online}{%
+    \usebibmacro{bibindex}%
+    \usebibmacro{begentry}%
+    \printnames{author}\adddot\addspace%
+    \printfield{year}\adddot\addspace%
+    \printfield{title}\adddot\addspace%
+    original source: \url{\thefield{url}}\adddot\addspace%
+    \printfield{note}%
+    \finentry%
+  }
+  ```
+
+- 英文欄位用語微調，去除 "in"：
+
+  ```tex
+  \DefineBibliographyStrings{english}{
+    in = {}
+  }
+  ```
+
 ## 使用方法
 
 在進行論文寫作時，只需改變所有檔名為 `my_XXXXXXX.XXX` 的文件。
@@ -96,7 +210,7 @@
 
 ## 版本資訊
 
-- **版本**：v1 (2024/09/07)
+- **版本**：v1 (2025/07)
 - **狀態**：可以成功執行於 Overleaf Online 以及 VSCode + TeXLive 2024（Windows 和 macOS）
 
 ## VSCode 設定

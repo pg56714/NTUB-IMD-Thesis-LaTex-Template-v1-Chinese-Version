@@ -200,6 +200,11 @@
   }
   ```
 
+- 修正作者與年份之間無逗號問題，加入逗號與空格：
+  ```tex
+  \renewcommand*{\nameyeardelim}{\addcomma\space}
+  ```
+
 ## 使用方法
 
 在進行論文寫作時，只需改變所有檔名為 `my_XXXXXXX.XXX` 的文件。

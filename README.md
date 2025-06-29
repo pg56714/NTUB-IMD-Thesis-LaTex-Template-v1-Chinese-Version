@@ -84,10 +84,10 @@
 
 為了符合《社會科學論叢》要求，新增並調整 `biblatex` 的格式如下：
 
-- 載入 `biblatex` 套件並使用 `authoryear` 樣式（符合作者-年份格式），文獻依作者排序（`nyt = name, year, title`），保留 URL 欄位：
+- 載入 `biblatex` 套件並使用 `authoryear` 樣式（符合作者-年份格式），文獻依作者排序（`nyt = name, year, title`）：
 
   ```tex
-  \usepackage[style=authoryear,sorting=nyt,url=true]{biblatex}
+  \usepackage[style=authoryear,sorting=nyt]{biblatex}
   \addbibresource{my_bib.bib}
   ```
 
@@ -146,13 +146,15 @@
     \printfield{labelyear}\adddot\addspace
     \printfield{title}\adddot\addspace%
     \printfield{journaltitle}\addcomma\addspace%
-    \printfield{volume}%
+    \printfield{volume}\adddot\addspace%
     \iffieldundef{number}{}{%
       \addcomma\addspace%
       no.~\printfield{number}%
     }%
-    \addcomma\addspace%
-    \printfield{pages}%
+    \iffieldundef{pages}{}{%
+      \addcomma\addspace%
+      \printfield{pages}%
+    }%
     \finentry%
   }
   ```
@@ -171,8 +173,10 @@
       \addcomma\addspace%
       \printlist{publisher}%
     }%
-    \addcomma\addspace%
-    \printfield{pages}%
+    \iffieldundef{pages}{}{%
+      \addcomma\addspace%
+      \printfield{pages}%
+    }%
     \finentry%
   }
   ```
@@ -186,7 +190,7 @@
     \printnames{author}\adddot\addspace%
     \printfield{labelyear}\adddot\addspace
     \printfield{title}\adddot\addspace%
-    original source: \url{\thefield{url}}\adddot\addspace%
+    original source: \texttt{\thefield{url}}\adddot\addspace
     \printfield{note}%
     \finentry%
   }

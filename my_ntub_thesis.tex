@@ -61,7 +61,7 @@
 \input{common_env}  %基本的環境設定  無需改變
 
 %參考文獻，記得在bib加上 keywords  = {chinese} or {english}
-\usepackage[style=authoryear,sorting=nyt,url=true]{biblatex} % 'backend=biber' is the default、nyt = name, year, title
+\usepackage[style=authoryear,sorting=nyt]{biblatex} % 'backend=biber' is the default、nyt = name, year, title
 \addbibresource{my_bib.bib}
 
 % 不顯示 type 字段（如 Doctoral dissertation）
@@ -103,13 +103,15 @@
   \printfield{labelyear}\adddot\addspace
   \printfield{title}\adddot\addspace%
   \printfield{journaltitle}\addcomma\addspace%
-  \printfield{volume}%
+  \printfield{volume}\adddot\addspace%
   \iffieldundef{number}{}{%
     \addcomma\addspace%
     no.~\printfield{number}%
   }%
-  \addcomma\addspace%
-  \printfield{pages}%
+  \iffieldundef{pages}{}{%
+    \addcomma\addspace%
+    \printfield{pages}%
+  }%
   \finentry%
 }
 
@@ -124,8 +126,10 @@
     \addcomma\addspace%
     \printlist{publisher}%
   }%
-  \addcomma\addspace%
-  \printfield{pages}%
+  \iffieldundef{pages}{}{%
+    \addcomma\addspace%
+    \printfield{pages}%
+  }%
   \finentry%
 }
 
@@ -135,7 +139,7 @@
   \printnames{author}\adddot\addspace%
   \printfield{labelyear}\adddot\addspace
   \printfield{title}\adddot\addspace%
-  original source: \url{\thefield{url}}\adddot\addspace%
+  original source: \texttt{\thefield{url}}\adddot\addspace
   \printfield{note}%
   \finentry%
 }

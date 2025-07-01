@@ -61,7 +61,7 @@
 \input{common_env}  %基本的環境設定  無需改變
 
 %參考文獻，記得在bib加上 keywords  = {chinese} or {english}
-\usepackage[style=authoryear,sorting=nyt]{biblatex} % 'backend=biber' is the default、nyt = name, year, title
+\usepackage[style=apa]{biblatex}
 \addbibresource{my_bib.bib}
 
 % 不顯示 type 字段（如 Doctoral dissertation）
@@ -87,8 +87,8 @@
 \DefineBibliographyStrings{english}{
   in = {}
 }
-\renewcommand*{\nameyeardelim}{\addcomma\space}
 
+\DeclareFieldFormat[article]{number}{#1}
 \DeclareFieldFormat[article,inproceedings,online]{title}{“#1”}
 \DeclareLabeldate{%
   \field{year}
@@ -100,17 +100,16 @@
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \printnames{author}\adddot\addspace%
-  \printfield{labelyear}\adddot\addspace
-  \printfield{title}\adddot\addspace%
+  \printfield{labelyear}\adddot\addspace%
+  \printfield{title}\addcomma\addspace%
   \printfield{journaltitle}\addcomma\addspace%
-  \printfield{volume}\adddot\addspace%
+  \printfield{volume}\addcomma\addspace%
   \iffieldundef{number}{}{%
-    \addcomma\addspace%
     no.~\printfield{number}%
   }%
   \iffieldundef{pages}{}{%
     \addcomma\addspace%
-    \printfield{pages}%
+    pp.~\printfield{pages}%
   }%
   \finentry%
 }
@@ -119,16 +118,11 @@
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \printnames{author}\adddot\addspace%
-  \printfield{labelyear}\adddot\addspace
+  \printfield{labelyear}\adddot\addspace%
   \printfield{title}\addcomma\addspace%
-  \printfield{booktitle}%
-  \iffieldundef{publisher}{}{%
-    \addcomma\addspace%
-    \printlist{publisher}%
-  }%
+  \printfield{booktitle}\addcomma\addspace%
   \iffieldundef{pages}{}{%
-    \addcomma\addspace%
-    \printfield{pages}%
+    pp.~\printfield{pages}%
   }%
   \finentry%
 }
@@ -136,10 +130,10 @@
 \DeclareBibliographyDriver{online}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
-  \printnames{author}\adddot\addspace%
-  \printfield{labelyear}\adddot\addspace
-  \printfield{title}\adddot\addspace%
-  original source: \texttt{\thefield{url}}\adddot\addspace
+  \printnames{author}\addcomma\addspace%
+  \printfield{labelyear}\adddot\addspace%
+  \printfield{title}\addcomma\addspace%
+  original source: \texttt{\thefield{url}}\addspace%
   \printfield{note}%
   \finentry%
 }

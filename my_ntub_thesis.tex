@@ -106,12 +106,14 @@
   \printfield{journaltitle}%
   \iffieldundef{volume}{}{%
     \addcomma\addspace%
-    vol.~\printfield{volume}\addcomma\addspace%
+    vol.~\printfield{volume}
   }%
   \iffieldundef{number}{}{%
-    no.~\printfield{number}\addcomma\addspace%
+    \addcomma\addspace%
+    no.~\printfield{number}
   }%
   \iffieldundef{pages}{}{%
+    \addcomma\addspace%
     pp.~\printfield{pages}%
   }%
   \finentry%

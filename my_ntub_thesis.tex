@@ -89,7 +89,8 @@
 }
 
 \DeclareFieldFormat[article]{number}{#1}
-\DeclareFieldFormat[article,inproceedings,online]{title}{“#1”}
+\DeclareFieldFormat[article]{volume}{#1}
+\DeclareFieldFormat[article,inproceedings-custom,online]{title}{“#1,”\hspace{0.3em}}
 \DeclareLabeldate{%
   \field{year}
   \field{extradate}
@@ -99,41 +100,52 @@
 \DeclareBibliographyDriver{article}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
-  \printnames{author}\adddot\addspace%
+  \printnames{author}\adddot%
   \printfield{labelyear}\adddot\addspace%
-  \printfield{title}\addcomma\addspace%
-  \printfield{journaltitle}\addcomma\addspace%
-  \printfield{volume}\addcomma\addspace%
+  \printfield{title}%
+  \printfield{journaltitle}%
+  \iffieldundef{volume}{}{%
+    \addcomma\addspace%
+    vol.~\printfield{volume}\addcomma\addspace%
+  }%
   \iffieldundef{number}{}{%
-    no.~\printfield{number}%
+    no.~\printfield{number}\addcomma\addspace%
   }%
   \iffieldundef{pages}{}{%
-    \addcomma\addspace%
     pp.~\printfield{pages}%
   }%
   \finentry%
 }
 
-\DeclareBibliographyDriver{inproceedings}{%
+% 定義自訂的 inproceedings-custom 類型, 不然會被 article 覆蓋
+\DeclareFieldFormat[inproceedings-custom]{booktitle}{#1}
+\DeclareBibliographyDriver{inproceedings-custom}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
-  \printnames{author}\adddot\addspace%
+  \printnames{author}\adddot%
   \printfield{labelyear}\adddot\addspace%
-  \printfield{title}\addcomma\addspace%
-  \printfield{booktitle}\addcomma\addspace%
+  \printfield{title}\addspace%
+  \printfield{booktitle}%
+  \iffieldundef{note}{}{%
+    \addspace(\printfield{note})%
+  }%
   \iffieldundef{pages}{}{%
-    pp.~\printfield{pages}%
+    \addcomma\addspace pp.~\printfield{pages}%
   }%
   \finentry%
 }
 
+\DeclareFieldFormat{bold}{\textbf{#1}}
 \DeclareBibliographyDriver{online}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
-  \printnames{author}\addcomma\addspace%
+  \printnames{author}\addcomma%
   \printfield{labelyear}\adddot\addspace%
-  \printfield{title}\addcomma\addspace%
-  original source: \texttt{\thefield{url}}\addspace%
+  \printfield{title}\addspace%
+  \iffieldundef{source}%
+    {}%
+    {\printfield[bold]{source}\addcolon\addspace}%
+  \printfield{url}\addspace%
   \printfield{note}%
   \finentry%
 }

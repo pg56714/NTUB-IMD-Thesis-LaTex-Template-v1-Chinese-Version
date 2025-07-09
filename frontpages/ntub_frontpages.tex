@@ -40,16 +40,6 @@
 %\setcounter{page}{1}
 \pagenumbering{Roman}
 %\pagenumbering{arabic}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%       指導教授推薦書 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% insert the printed standard form when the thesis is ready to bind
-% 在口試完成後，再將已簽名的推薦書放入以便裝訂
-% create an entry in table of contents for 推薦書
-% 目前送出空白頁
-%\newpage{\thispagestyle{empty}\addcontentsline{toc}{chapter}{\nameInnerCover}\mbox{}\clearpage}%
-%\newpage
 
 % 判斷是否要浮水印？
 \ifx\mywatermark\undefined 
@@ -63,16 +53,25 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%       論文口試委員審定書 (計頁碼，但不印頁碼) 
+%       論文口試委員審定書、無違反學術倫理聲明書(不顯示頁碼、目錄)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % insert the printed standard form when the thesis is ready to bind
-% 在口試完成後，再將已簽名的審定書放入以便裝訂
-% create an entry in table of contents for 審定書
-% 目前送出空白頁
+% 在口試完成後，再將已簽名的審定書、聲明書放入以便裝訂
+% create an entry in table of contents for 審定書、聲明書
 
-%\newpage{\thispagestyle{empty}\addcontentsline{toc}{chapter}{\nameCommitteeForm}\mbox{}\clearpage}%
+% % 插入審定書 PDF（假設檔名為 approval.pdf）
+% \cleardoublepage
+% \includepdf[pages=-, pagecommand={\thispagestyle{empty}}]{frontpages/forms/口試審定書-簽名版.pdf}
 
+% % 插入學術倫理聲明書 PDF（假設檔名為 ethics.pdf）
+% \cleardoublepage
+% \includepdf[pages=-, pagecommand={\thispagestyle{empty}}]{frontpages/forms/無違反學術倫理聲明書-簽名版.pdf}
+
+% ↓ 在插入完兩個 PDF 後，重設頁碼計數
+% \cleardoublepage
+% \setcounter{page}{1}
+% \pagenumbering{Roman}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %       中文摘要 

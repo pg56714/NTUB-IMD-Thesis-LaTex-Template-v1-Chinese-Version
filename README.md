@@ -1,6 +1,6 @@
-# NTUB Thesis LaTex Template v1 Chinese Version (2025/07)
+# NTUB IMD Thesis LaTex Template v1 Chinese Version (2025/07)
 
-- [ ] **2025/07 確認格式可以被接受後發佈模板 [Overleaf-NTUB-Template]()**
+- [x] **2025/07 發佈模板 [Overleaf-NTUB-IMD-Template]()**
 
 本範本是由 NTUST Thesis template 2.0.1 (Chinese Version) latex 範本改編而來
 
@@ -97,8 +97,8 @@
 
 ### 浮水印設定
 
+- 學校上傳論文時審核完後會自行添加浮水印，提供下載全文檔送印裝訂，故不需要自行加入
 - 位於 `common_env` 內第 89 行
-- 等待學校審核完論文後才能下載浮水印檔案
 
   ```tex
   % \input{watermark/ntub_watermark.tex}

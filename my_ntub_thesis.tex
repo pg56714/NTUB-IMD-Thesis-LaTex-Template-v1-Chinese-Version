@@ -20,10 +20,16 @@
 ]
 
 %設定中文字型
-%參考 https://www.overleaf.com/learn/latex/Questions/What_OTF/TTF_fonts_are_supported_via_fontspec%3F#Chinese
+%本機 字體(github有附上)
 \setCJKmainfont{mingliu.ttc}[AutoFakeBold=3, Script=Default]% 設定內文為新細明體(沒有內建的)，使用W11新細明體字型
 \setCJKmonofont{mingliu.ttc}
 \setCJKfamilyfont{kai}{kaiu.ttf}[AutoFakeBold=3]% 設定標楷體直接使用TW-Kai也是一樣，使用W11標楷體字型
+
+%overleaf --> 跟本機的差別就是新細明體看起來不一樣 (overleaf template 要開源字體才能發佈)
+%https://www.overleaf.com/learn/latex/Questions/What_OTF/TTF_fonts_are_supported_via_fontspec%3F#Chinese
+% \setCJKmainfont{AR PL UMing TW}[AutoFakeBold=3] %AR PL UMing TW看起來比較像新細明體
+% \setCJKmonofont{AR PL UMing TW}
+% \setCJKfamilyfont{kai}{TW-Kai}[AutoFakeBold=3]
 
 % 設置段落自動換行
 \XeTeXlinebreaklocale "zh"
@@ -43,7 +49,7 @@
     citecolor=black,
     pdfpagemode=FullScreen,
     linktoc=all, % 強制所有標題鏈接有效
-    pdftitle={基於深度學習的多模型協同影像處理系統研究}, %之後改成論文題目
+    pdftitle={論文題目}, %之後改成論文題目
 }
 
 % % debug

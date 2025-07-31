@@ -1,12 +1,15 @@
 # NTUB IMD Thesis LaTex Template v1 Chinese Version (2025/07)
 
-- [x] **2025/07 發佈模板 [Overleaf-NTUB-IMD-Template]()**
-
 本模板是由 NTUST Thesis template 2.0.1 (Chinese Version) latex 改編而來
 
 ## 📌 免責聲明與使用須知
 
 本 LaTeX 模板依據 **國立臺北商業大學資訊管理系人工智慧與商業應用碩士班論文格式**需求，參考並改寫自 NTUST 與 NCKU 之公開模板版本，**並非官方提供模板**。本模板已盡力符合撰寫格式要求，惟各系所或指導教授對格式可能仍有個別調整要求，請使用者**務必自行確認所屬學院與系所之最新論文格式規範**，如有不符請自行修改。
+
+## 版本資訊
+
+- **版本**：v1 (2025/07)
+- **狀態**：可以成功執行於 Overleaf Online 以及 VSCode + TeXLive 2024（Windows 和 macOS）
 
 ## 修改內容
 
@@ -88,6 +91,20 @@
 
 ## 使用方法
 
+### Overleaf 使用
+
+由於模板市集政策變更，需由官方(學校)自行發佈模板，故無法通過模板審核，如需使用，請手動上傳檔案使用，請按照以下步驟：
+
+1. **下載完整模板檔案**：從本 GitHub 倉庫下載所有檔案
+2. **上傳至 Overleaf**：
+   - 建立新專案或開啟現有專案
+   - 將下載的檔案上傳至專案中
+3. **編譯設定**：Settings Compiler 選擇 XeLaTeX
+
+有需要觀看範例請至 [Overleaf-NTUB-IMD-Template](https://www.overleaf.com/read/bbgkfcjyjwdp#839c42) 觀看。
+
+### 本地編譯
+
 在進行論文寫作時，只需改變所有檔名為 `my_XXXXXXX.XXX` 的文件。
 
 - 主結構檔：`my_ntub_thesis.tex`
@@ -104,12 +121,7 @@
   % \input{watermark/ntub_watermark.tex}
   ```
 
-## 版本資訊
-
-- **版本**：v1 (2025/07)
-- **狀態**：可以成功執行於 Overleaf Online 以及 VSCode + TeXLive 2024（Windows 和 macOS）
-
-## VSCode 設定
+### VSCode 設定
 
 [latex-in-vscode 相關教學](https://hackmd.io/@zxcj04/latex-in-vscode)
 
